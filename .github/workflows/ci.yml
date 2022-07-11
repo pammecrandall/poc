@@ -75,6 +75,10 @@ jobs:
             type=edge
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
+          labels: |
+            org.opencontainers.image.description=NGINX Kubernetes Gateway
+            org.opencontainers.image.documentation=xxx
+            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/nginxinc/nginx-kubernetes-gateway/main/README.md
 
       - name: Output Variables
         id: var
