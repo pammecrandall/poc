@@ -105,4 +105,4 @@ jobs:
           cache-from: type=gha,scope=${{ matrix.image }}
           cache-to: type=gha,scope=${{ matrix.image }},mode=max
           push: true
-          tags: user/app:latest
+          tags: ${{ steps.meta.outputs.tags }}
