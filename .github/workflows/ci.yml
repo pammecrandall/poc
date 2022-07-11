@@ -80,13 +80,13 @@ jobs:
         run: |
           version=${{ steps.meta.outputs.version }}
           if ${{ startsWith(github.ref, 'refs/tags/') }}; then
-              poc_version=v$version
+              ic_version=v$version
           else
               tag=$(git describe --tags --abbrev=0)
               sha_short=$(echo ${{ github.sha }} | cut -c1-7)
-              poc_version=$tag-$version-$sha_short
+              ic_version=$tag-$version-$sha_short
           fi
-          echo "::set-output name=poc_version::$poc_version"
+          echo "::set-output name=ic_version::$ic_version"
       - name: Build Docker image (and push if not a PR)
         uses: docker/build-push-action@v3
         with:
@@ -104,4 +104,4 @@ jobs:
           no-cache: ${{ github.event_name != 'pull_request' }}
           build-args: |
             BUILD_OS=${{ matrix.image }}
-            POC_VERSION=${{ steps.var.outputs.poc_version }}
+            IC_VERSION=${{ steps.var.outputs.ic_version }}
