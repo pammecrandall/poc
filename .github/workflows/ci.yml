@@ -96,16 +96,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           file: build/Dockerfile
-          context: '.'
-          cache-from: type=gha,scope=${{ matrix.image }}
-          cache-to: type=gha,scope=${{ matrix.image }},mode=max
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          platforms: ${{ github.event_name != 'pull_request' && matrix.platforms || '' }}
           load: ${{ github.event_name == 'pull_request' }}
           push: ${{ github.event_name != 'pull_request' }}
           pull: true
-          no-cache: ${{ github.event_name != 'pull_request' }}
-          build-args: |
-            BUILD_OS=${{ matrix.image }}
-            IC_VERSION=${{ steps.var.outputs.ic_version }}
