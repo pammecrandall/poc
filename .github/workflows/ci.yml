@@ -72,7 +72,6 @@ jobs:
             name=ghcr.io/nginxinc/poc-test
           flavor: suffix=${{ contains(matrix.image, 'ubi') && '-ubi' || '' }}${{ contains(matrix.image, 'alpine') && '-alpine' || '' }},onlatest=true
           tags: |
-            type=poctagname
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
