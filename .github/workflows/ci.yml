@@ -101,5 +101,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           file: build/Dockerfile
+          registry: ghcr.io
           push: true
           tags: user/app:latest
