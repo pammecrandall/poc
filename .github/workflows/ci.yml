@@ -79,7 +79,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            name=ghcr.io/nginxinc/poc-test
+            name=ghcr.io/pammecrandall/poc-test
           flavor: suffix=${{ contains(matrix.image, 'ubi') && '-ubi' || '' }}${{ contains(matrix.image, 'alpine') && '-alpine' || '' }},onlatest=true
           tags: |
             type=edge
