@@ -3,6 +3,7 @@ name: Create Draft Release
 on:
   push:
     branches:
+      - main
       - release-*
   workflow_dispatch:
     inputs:
