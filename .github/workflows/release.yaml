@@ -137,4 +137,3 @@ jobs:
 
             console.log(`Release created: ${release.data.html_url}`)
             console.log(`Release notes: ${release_notes.data.body}`)
-
