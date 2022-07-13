@@ -120,7 +120,7 @@ jobs:
                 target_commitish: branch,
                 name: 'v' + version,
                 body: release_notes.data.body + footer,
-                draft: true,
+                draft: false,
               }))
             } else {
               console.log("Draft not found")
@@ -131,7 +131,7 @@ jobs:
                 target_commitish: ref,
                 name: 'v' + version,
                 body: release_notes.data.body + footer,
-                draft: true,
+                draft: false,
               }))
             }
 
