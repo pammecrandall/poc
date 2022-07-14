@@ -80,7 +80,7 @@ jobs:
               let level
               temp_notes.includes("### 🚀 Features") ? level = 'minor' : level = 'patch'
               temp_notes.includes("### 💣 Breaking Changes") ? level = 'major' : level = level
-              version = semver.inc(tagFrom, level)
+              version = semver.inc(tagFrom, 'prerelease')
               console.log(`The level of the release is ${level}`)
             }
             const draft = releases.find((r) => r.draft && r.tag_name === "v"+version)
@@ -137,3 +137,4 @@ jobs:
 
             console.log(`Release created: ${release.data.html_url}`)
             console.log(`Release notes: ${release_notes.data.body}`)
+
