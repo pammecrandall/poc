@@ -105,4 +105,3 @@ jobs:
           build-args: |
             BUILD_OS=${{ matrix.image }}
             IC_VERSION=${{ steps.var.outputs.ic_version }}
-
