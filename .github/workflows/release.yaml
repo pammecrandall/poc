@@ -3,7 +3,6 @@ name: Create Draft Release
 on:
   push:
     branches:
-      - main
       - release-*
   workflow_dispatch:
     inputs:
@@ -80,7 +79,7 @@ jobs:
               let level
               temp_notes.includes("### 🚀 Features") ? level = 'minor' : level = 'patch'
               temp_notes.includes("### 💣 Breaking Changes") ? level = 'major' : level = level
-              version = semver.inc(tagFrom, 'prerelease')
+              version = semver.inc(tagFrom, level)
               console.log(`The level of the release is ${level}`)
             }
             const draft = releases.find((r) => r.draft && r.tag_name === "v"+version)
@@ -120,7 +119,7 @@ jobs:
                 target_commitish: branch,
                 name: 'v' + version,
                 body: release_notes.data.body + footer,
-                draft: false,
+                draft: true,
               }))
             } else {
               console.log("Draft not found")
@@ -131,10 +130,9 @@ jobs:
                 target_commitish: ref,
                 name: 'v' + version,
                 body: release_notes.data.body + footer,
-                draft: false,
+                draft: true,
               }))
             }
 
             console.log(`Release created: ${release.data.html_url}`)
             console.log(`Release notes: ${release_notes.data.body}`)
-
