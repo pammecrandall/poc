@@ -93,7 +93,7 @@ jobs:
           context: '.'
           cache-from: type=gha,scope=${{ matrix.image }}
           cache-to: type=gha,scope=${{ matrix.image }},mode=max
-          tags: crandall::${{ github.sha }}
+          tags: crandall:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ github.event_name != 'pull_request' && matrix.platforms || '' }}
           load: ${{ github.event_name == 'pull_request' }}
