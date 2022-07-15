@@ -70,7 +70,7 @@ jobs:
             name=ghcr.io/pammecrandall/poc-test
           flavor: suffix=${{ contains(matrix.image, 'ubi') && '-ubi' || '' }}${{ contains(matrix.image, 'alpine') && '-alpine' || '' }},onlatest=true
           tags: |
-            type=poctag
+            type=edge
           labels: |
             org.opencontainers.image.description=gateway poc
             org.opencontainers.image.documentation=xxx
