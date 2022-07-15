@@ -97,7 +97,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ github.event_name != 'pull_request' && matrix.platforms || '' }}
           load: ${{ github.event_name == 'pull_request' }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' && !startsWith(github.ref, 'refs/heads/main')}}
           pull: true
           no-cache: ${{ github.event_name != 'pull_request' }}
           build-args: |
