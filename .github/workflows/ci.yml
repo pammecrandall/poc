@@ -102,7 +102,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: nginx/nginx-kubernetes-gateway:${{ needs.vars.outputs.sha }}
-          load: true
+          load: ${{ startsWith(github.ref, 'refs/tags/v') }}
           push: ${{ startsWith(github.ref, 'refs/tags/v') }}
           build-args: |
             VERSION=${{ needs.vars.outputs.version }}
