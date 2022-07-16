@@ -99,10 +99,10 @@ jobs:
           file: build/Dockerfile
           context: '.'
           target: local
-          load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: nginx/nginx-kubernetes-gateway:${{ needs.vars.outputs.sha }}
+          load: true
           push: ${{ startsWith(github.ref, 'refs/tags/v') }}
           build-args: |
             VERSION=${{ needs.vars.outputs.version }}
