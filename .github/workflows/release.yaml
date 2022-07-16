@@ -3,7 +3,7 @@ name: Create Draft Release
 on:
   push:
     branches:
-      - release-*
+      - test-release-*
   workflow_dispatch:
     inputs:
       tagFrom:
@@ -123,3 +123,4 @@ jobs:
 
             console.log(`Release created: ${release.data.html_url}`)
             console.log(`Release notes: ${release_notes.data.body}`)
+
