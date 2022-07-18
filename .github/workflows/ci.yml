@@ -3,7 +3,8 @@ name: Continuous Integration
 on:
   push:
     branches:
-      - 'main,test-release-*'
+      - main
+      - test-release-*
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
     paths-ignore:
