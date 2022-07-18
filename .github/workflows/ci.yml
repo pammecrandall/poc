@@ -91,26 +91,18 @@ jobs:
           echo "${{steps.prettier-run.outputs.prettier_output}}"
           echo "Run \"make njs-fmt\" locally to format the code"
 
-  unit-tests:
-    name: Unit Tests
+  njs-unit-tests:
+    name: NJS Unit Tests
     runs-on: ubuntu-20.04
-    needs: vars
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Setup Golang Environment
-        uses: actions/setup-go@v3
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v3
         with:
-          go-version: ${{ needs.vars.outputs.go_version }}
-      - name: Run Tests
-        run: make unit-test
-      - name: Upload Coverage Report
-        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: cover-${{ needs.vars.outputs.sha }}.html
-          path: ${{ github.workspace }}/cover.html
-        if: always()
+          node-version: 18
+      - run: npm install mocha@^8.2 esm chai
+      - run: npx mocha -r esm ${{ github.workspace }}/internal/nginx/modules/test/httpmatches.test.js
 
   binary:
     name: Build Binary
