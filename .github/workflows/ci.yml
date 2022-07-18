@@ -101,7 +101,7 @@ jobs:
           target: local
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: ghcr.io/nginx/nginx-kubernetes-gateway:latest
+          tags: ghcr.io/nginxinc/nginx-kubernetes-gateway
           load: ${{ !startsWith(github.ref, 'refs/tags/v') }}
           push: ${{ startsWith(github.ref, 'refs/tags/v') }}
           build-args: |
