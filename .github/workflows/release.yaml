@@ -3,7 +3,7 @@ name: Create Draft Release
 on:
   push:
     branches:
-      - test-release-*
+      - 'release-*'
   workflow_dispatch:
     inputs:
       tagFrom:
