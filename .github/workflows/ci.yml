@@ -117,3 +117,4 @@ jobs:
             VERSION=${{ needs.vars.outputs.version }}
             GIT_COMMIT=${{ needs.vars.outputs.sha }}
             DATE=${{ needs.vars.outputs.date }}
+
