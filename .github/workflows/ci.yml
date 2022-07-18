@@ -109,7 +109,7 @@ jobs:
           target: local
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: ${{ steps.meta.outputs.tags }} 
+          tags: nginx-kubernetes-gateway:${{ steps.meta.outputs.tags }} 
           load: ${{ !startsWith(github.ref, 'refs/tags/v') }}
           push: ${{ startsWith(github.ref, 'refs/tags/v') }}
           build-args: |
