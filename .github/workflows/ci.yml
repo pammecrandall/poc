@@ -93,6 +93,14 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            name=ghcr.io/nginxinc/nginx-kubernetes-gateway
+          tags: |
+            type=semver,pattern={{version}}
       - name: Build Image Debian
         uses: docker/build-push-action@v2
         with:
@@ -101,7 +109,7 @@ jobs:
           target: local
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: ghcr.io/nginxinc/nginx-kubernetes-gateway
+          tags: ${{ steps.meta.outputs.tags }} 
           load: ${{ !startsWith(github.ref, 'refs/tags/v') }}
           push: ${{ startsWith(github.ref, 'refs/tags/v') }}
           build-args: |
